@@ -63,7 +63,8 @@ export default async function PostPage() {
 async function getPosts() {
   // Fetch data from external API
   const res = await fetch(
-    `https://9newstoday.net/wp-json/wp/v2/posts?per_page=20`
+    `https://9newstoday.net/wp-json/wp/v2/posts?per_page=20`,
+    { next: { revalidate: 60 } }
   );
   const data = await res.json();
   return data;
